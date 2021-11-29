@@ -5,7 +5,7 @@
 -----------------------------------------------------------
 -- Neovim API aliases
 -----------------------------------------------------------
---local map = vim.api.nvim_set_keymap  -- set global keymap
+local map = vim.api.nvim_set_keymap  -- set global keymap
 local cmd = vim.cmd     				-- execute Vim commands
 local exec = vim.api.nvim_exec 	-- execute Vimscript
 local fn = vim.fn       				-- call Vim functions
@@ -57,7 +57,11 @@ opt.synmaxcol = 240       -- max column for syntax highlight
 -- Colorscheme
 -----------------------------------------------------------
 opt.termguicolors = true      -- enable 24-bit RGB colors
-cmd [[colorscheme monokai]]
+cmd [[set termguicolors]]
+cmd [[colorscheme gruvbox]]
+
+map('n', '<leader>d', ':set background=dark<CR>', { noremap = true })
+map('n', '<leader>l', ':set background=light<CR>', { noremap = true })
 
 -----------------------------------------------------------
 -- Tabs, indent

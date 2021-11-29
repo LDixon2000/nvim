@@ -16,7 +16,7 @@ local colors = require 'colors'
 
 -- monokai colors
 local vi_mode_colors = {
-  NORMAL = colors.cyan,
+  NORMAL = colors.normal,
   INSERT = colors.green,
   VISUAL = colors.yellow,
   OP = colors.cyan,
@@ -58,9 +58,8 @@ local comps = {
         }
         return set_color
       end,
-      left_sep = ' ',
-      right_sep = ' '
-    }
+      left_sep = '',
+      right_sep = {'', {str='slant_right', hl = function() local set_color = { fg = vi_mode_utils.get_mode_color(), bg = colors.bg } return set_color end }}}
   },
   -- parse file information
   file = {
@@ -73,8 +72,11 @@ local comps = {
           file_modified_icon = ''
         }
       },
-      hl = { fg = colors.cyan },
-      icon = '',
+      hl = { fg = colors.cyan,
+             bg = colors.bg },
+      left_sep = '',
+      right_sep = {'', {str='slant_left', hl = { fg = colors.bgdark, bg = colors.bg}}},
+      icon = ''
     },
     -- file type
     type = {
@@ -95,8 +97,8 @@ local comps = {
         end
         return icon .. os
       end,
-      hl = { fg = colors.fg },
-      left_sep = ' ',
+      hl = { fg = colors.fg},
+      left_sep = {str = 'slant_right', hl = { fg = colors.bgdark, bg = colors.bg }},
       right_sep = ' '
     },
     -- cursor position in %
@@ -129,7 +131,7 @@ local comps = {
       provider = 'diagnostic_errors',
       icon = '⚠ ',
       hl = { fg = colors.red },
-      left_sep = '  ',
+      left_sep = ' ',
     },
     warn = {
       provider = 'diagnostic_warnings',
@@ -145,17 +147,19 @@ local comps = {
     },
     hint = {
       provider = 'diagnostic_hints',
-      icon = ' ',
+      icon = '  ',
       hl = { fg = colors.cyan },
       left_sep = ' ',
+      right_sep = ' ',
     },
   },
   lsp = {
     name = {
       provider = 'lsp_client_names',
       icon = '  ',
-      hl = { fg = colors.pink },
-      left_sep = '  ',
+      hl = { fg = colors.pink, bg = colors.bgdark },
+      left_sep = {str = 'slant_left', hl = { bg = colors.bg, fg = colors.bgdark }},
+      right_sep = {str = ' ', hl = { bg = colors.bgdark, fg = colors.bgdark }},
     }
   },
   -- git info
@@ -163,29 +167,32 @@ local comps = {
     branch = {
       provider = 'git_branch',
       icon = ' ',
-      hl = { fg = colors.pink },
-      left_sep = '  ',
+      hl = { fg = colors.pink, bg = colors.bgdark  },
+      left_sep = {str = ' ', hl = { bg = colors.bgdark, fg = colors.bgdark }},
     },
     add = {
       provider = 'git_diff_added',
-      icon = '  ',
-      hl = { fg = colors.green },
-      left_sep = ' ',
+      hl = { bg = colors.bgdark },
+      icon = { str = '  ', hl = { fg = colors.green, bg = colors.bgdark }},
+      left_sep = {str = ' ', hl = { bg = colors.bgdark, fg = colors.bgdark }},
     },
     change = {
       provider = 'git_diff_changed',
-      icon = '  ',
-      hl = { fg = colors.orange },
-      left_sep = ' ',
+      hl = { bg = colors.bgdark },
+      icon = {str = '  ', hl = { fg = colors.orange, bg = colors.bgdark }},
+      left_sep = {str = ' ', hl = { bg = colors.bgdark, fg = colors.bgdark }},
     },
     remove = {
       provider = 'git_diff_removed',
-      icon = '  ',
-      hl = { fg = colors.red },
-      left_sep = ' ',
-    }
-  }
+      hl = { bg = colors.bgdark },
+      icon = {str = '  ', hl = { fg = colors.red, bg = colors.bgdark }},
+      left_sep = {str = ' ', hl = { bg = colors.bgdark, fg = colors.bgdark }},
+      right_sep = {{str = ' ', hl = { bg = colors.bgdark, fg = colors.bgdark }}, {str = 'slant_right', hl = { bg = colors.bg, fg = colors.bgdark }}},
+    },
+  },
 }
+
+
 
 -- Get active/inactive components
 --- see: https://github.com/famiu/feline.nvim/blob/master/USAGE.md#components

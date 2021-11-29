@@ -50,6 +50,9 @@ return packer.startup(function()
   -- LSP
   use 'neovim/nvim-lspconfig'
 
+  -- friendly snippets
+  use 'rafamadriz/friendly-snippets'
+
   -- autocomplete
   use {
     'hrsh7th/nvim-cmp',
@@ -58,6 +61,7 @@ return packer.startup(function()
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-buffer',
+      'mlaursen/vim-react-snippets',
       'saadparwaiz1/cmp_luasnip',
     },
   }
@@ -91,4 +95,32 @@ return packer.startup(function()
   'nvim-telescope/telescope.nvim',
   requires = { {'nvim-lua/plenary.nvim'} }
   }
+
+  -- vim-easymotion
+  use 'easymotion/vim-easymotion'
+
+  -- barbar
+  use {
+    'romgrk/barbar.nvim',
+    requires = {'kyazdani42/nvim-web-devicons'}
+  }
+
+  -- jsx formatting
+  use {
+    'maxmellon/vim-jsx-pretty',
+    requires = {'yuezk/vim-js'}
+  }
+
+  -- papercolor theme
+  use 'NLKNguyen/papercolor-theme'
+
+  -- gruvbox theme
+  use 'morhetz/gruvbox'
+
+  -- emmet
+  use {
+    'mattn/emmet-vim',
+  }
+  -- automatic tag rename
+  use 'AndrewRadev/tagalong.vim'
 end)

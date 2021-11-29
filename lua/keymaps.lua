@@ -52,10 +52,7 @@ map('n', '<leader>n', ':NvimTreeFindFile<CR>', default_opts) -- search file
 map('n', '<C-m>', ':Vista!!<CR>', default_opts)   -- open/close
 
 -- Telescope
-map('n', '<leader>ff', ':Telescope find_files<cr>', { noremap = true })
-map('n', '<leader>fg', ':Telescope live_grep<cr>', { noremap = true })
-map('n', '<leader>fb', ':Telescope buffers<cr>', { noremap = true })
-map('n', '<leader>fh', ':Telescope help_tags<cr>', { noremap = true })
--- nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
--- nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
--- nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
+map('n', '<leader>f', ':Telescope find_files<cr>', { noremap = true })
+map('n', '<leader>g', ':Telescope live_grep<cr>', { noremap = true })
+map('n', '<leader>b', ':Telescope buffers<cr>', { noremap = true })
+map('n', '<leader>h', ':Telescope help_tags<cr>', { noremap = true })
