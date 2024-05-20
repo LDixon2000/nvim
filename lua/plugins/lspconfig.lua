@@ -5,9 +5,17 @@ return {
     opts = {
       ---@type lspconfig.options
       servers = {
+        -- web
         html = {},
-        -- pyright will be automatically installed with mason and loaded with lspconfig
+        cssls = {},
+        vls = {},
+        tsserver = {},
+        jsonls = {},
+        tailwindcss = {},
+
         pyright = {},
+        lua_ls = {},
+        yamlls = {},
       },
     },
   },
